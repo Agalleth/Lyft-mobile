@@ -1,0 +1,9 @@
+body{
+  background-image: linear-gradient(to left, #76278F, #642485, #432073, #2E1E67, #2B1E66);
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+ img{
+   width: 25%;
+   margin: 15vh 6vw;
+ }
