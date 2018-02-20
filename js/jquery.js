@@ -3,6 +3,7 @@
 $(document).ready(function () {
   $(".control").click(cargarImagen);
 
+
 })
 var target = 0;
 
@@ -21,7 +22,6 @@ var changeImage = function (target) {
   var $newImage = $("div[data-slide='" + target +"']");
   $actualImage.removeClass("active");
   $newImage.addClass("active");
-
 }
 
 var changeColorButton = function (target) {
@@ -36,3 +36,78 @@ $(document).ready(function() {
 });
 
   $('.dropdown-button').dropdown('open');
+
+
+var verifyBtn = $("#verify-phone");
+function loadPage(){
+  $inputPhone.keyup(validatePhone);
+}
+
+
+function validatePhone() {
+
+  if($(this).val().trim().length == 10) {
+    $verifyBtn.removeAttr("disabled", false);
+    number = $icon_telephone.val();
+    saveNumber(number);
+  } else {
+    $nextButton.attr("disabled", true);
+  }
+  console.log(number);
+}
+function saveNumber(number) {
+  console.log(number);
+  var $containernumber = $('#number_user');
+
+  $containernumber.text(number);
+}
+function pruebaTelefono() {
+    var str = $("#icon_telephone").val();
+    var nstr = str.replace(/\D/g,'');
+    if(nstr.length==10){
+        $("#verify-phone").prop('disabled', false);
+    }
+    else if (nstr.length>10) {
+        nstr=nstr.substring(0, 10);
+        $("#verify-phone").prop('disabled', false);
+    }
+    else{
+        $("#verify-phone").prop('disabled', true);
+    }
+    $("#icon_telephone").val(nstr);
+}
+
+function getRandom() {
+  var random =  Math.random() * (9.9 - 0) + 0;
+  var randomChido = parseInt(random);
+  //console.log(randomChido)
+  return randomChido;
+}
+$("#verify-phone").click(function (){
+  var num_1=getRandom();
+  var num_2=getRandom();
+  var num_3=getRandom();
+
+  alert("LAB - "+num_1+" "+num_2+" "+num_3);
+  window.location.href="code.html?num_1="+num_1+"&num_2="+num_2+"&num_3="+num_3;
+});
+
+/*
+var url_string = "window.location.href"
+var url = new URL(url_string);
+var c = url.searchParams.get("c");
+console.log(c);
+*/
+$("#resend-btn").click(function(){
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var num_1= url.searchParams.get("num_1");
+  var num_2= url.searchParams.get("num_2");
+  var num_3= url.searchParams.get("num_3");
+  alert("LAB - "+num_1+" "+num_2+" "+num_3);
+  //console.log(c);
+});
+
+$("#enter-code").click(function(){
+  window.location.href= code.html
+})
