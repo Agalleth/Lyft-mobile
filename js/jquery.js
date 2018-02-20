@@ -2,8 +2,6 @@
 
 $(document).ready(function () {
   $(".control").click(cargarImagen);
-
-
 })
 var target = 0;
 
@@ -63,7 +61,7 @@ function saveNumber(number) {
 }
 function pruebaTelefono() {
     var str = $("#icon_telephone").val();
-    var nstr = str.replace(/\D/g,'');
+    var nstr = str.replace(/\D/g,''); //Expresión regular para que bote cualquier cosa que no sea dígito numérico
     if(nstr.length==10){
         $("#verify-phone").prop('disabled', false);
     }
@@ -76,13 +74,14 @@ function pruebaTelefono() {
     }
     $("#icon_telephone").val(nstr);
 }
-
+//Generando rándom
 function getRandom() {
   var random =  Math.random() * (9.9 - 0) + 0;
-  var randomChido = parseInt(random);
+  var randomParseado = parseInt(random);
   //console.log(randomChido)
-  return randomChido;
+  return randomParseado;
 }
+//generando los tres números
 $("#verify-phone").click(function (){
   var num_1=getRandom();
   var num_2=getRandom();
@@ -98,6 +97,8 @@ var url = new URL(url_string);
 var c = url.searchParams.get("c");
 console.log(c);
 */
+//Sacando el código rándom generado de la url para poder reutilizarlo
+
 $("#resend-btn").click(function(){
   var url_string = window.location.href;
   var url = new URL(url_string);
@@ -107,7 +108,3 @@ $("#resend-btn").click(function(){
   alert("LAB - "+num_1+" "+num_2+" "+num_3);
   //console.log(c);
 });
-
-$("#enter-code").click(function(){
-  window.location.href= code.html
-})
